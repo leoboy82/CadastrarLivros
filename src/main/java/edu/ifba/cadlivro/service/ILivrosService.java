@@ -7,8 +7,11 @@ import edu.ifba.cadlivro.model.Livros;
 public interface ILivrosService {
 	
 	void save(Livros p);
+	
 	void delete(Integer id);
+	
 	Livros find(Integer id);
+	
 	List<Livros> findAll();
 
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/general.html :: headerfiles (title = 'Listagem de Livros')">
 </head>
 <body>
@@ -10,7 +9,7 @@
 
 	<div class="container my-3">
 		
-		<h1 class="display-4 text-center my-3">Lista de Livros</h1>
+		<h1 class="display-4 text-center my-3">Lista dos Livros Cadastrados</h1>
 		<table class="table table-striped text-center">
 			<thead>
 				<tr>
@@ -19,7 +18,7 @@
 					<th scope="col">Autor</th>
 					<th scope="col">Estoque</th>
 					<th scope="col">Registro</th>
-					<th scope="col">Ação</th>
+					<th scope="col">Acao</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,7 +26,7 @@
 					<th scope="row" th:text="${prod.id}"></th>
 					<th th:text="${prod.titulo}"></th>
 					<th th:text="${prod.autor}"></th>
-					<th th:text="${prod.quantity > 0} ? 'Sim' : 'Não'"></th>
+					<th th:text="${prod.quantity > 0} ? 'Sim' : 'Nao'"></th>
 					<th th:text="${#dates.format(prod.registration, 'dd/MM/yyyy')}"></th>
 					<th>
 						<a class="btn btn-outline-primary"

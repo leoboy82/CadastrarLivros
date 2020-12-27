@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/general.html :: headerfiles (title = 'Cadastro de Livros')">
+</head>
+<body>
+
+	<header th:replace="fragments/general.html :: header">
+	</header>
+
+	<div class="container my-3">
+		<h1 class="display-5 text-center my-3" th:if="${mode} == 'view'">Detalhes do Livro</h1>
+		<h1 class="display-5 text-center my-3" th:if="${mode} == 'update'">Editar Livro</h1>
+		<h1 class="display-5 text-center my-3" th:if="${mode} == 'create'">Cadastrar Livros</h1>
+	
+		<form th:action="@{/livros/save}" th:object="${livros}" method="post">
+			<fieldset class="form-group" th:disabled="${mode} == 'view'">
+				<input type="hidden" th:field="*{id}">
+				
+				<div class="form-group row">
+					<label for="inputTitulo" class="col-sm-2 col-form-label">Titulo</label>
+					<div class="col-sm-10">
+						<input type="text" th:field="*{titulo}" class="form-control"
+							id="inputTitulo" placeholder="Titulo" required="required">
+					</div>
+				</div>	
+				
+				<div class="form-group row">
+					<label for="inputAutor" class="col-sm-2 col-form-label">Autor</label>
+					<div class="col-sm-10">
+						<textarea th:field="*{autor}" class="form-control"
+							id="inputAutor" placeholder="Autor">
+						</textarea>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="inputEditora" class="col-sm-2 col-form-label">Editora</label>
+					<div class="col-sm-10">
+						<textarea th:field="*{editora}" class="form-control"
+							id="inputEditora" placeholder="Editora">
+						</textarea>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="inputQuantity" class="col-sm-2 col-form-label">Quantidade</label>
+					<div class="col-sm-10">
+						<input type="number" step="1" th:field="*{quantity}" class="form-control"
+							id="inputQuantity" placeholder="Quantidade" required="required">
+					</div>
+				</div>
+				
+				<div class="form-group row" th:if="${mode} != 'create'">
+					<label for="inputRegistration" class="col-sm-2 col-form-label">Registro</label>
+					<div class="col-sm-10">
+						<input type="text" th:field="*{registration}" class="form-control"
+							id="inputRegistration" disabled="disabled">
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary btn-block" th:if="${mode} != 'view'">Enviar</button>
+			</fieldset>
+		</form>
+	</div>
+
+	<footer th:replace="fragments/general.html :: footer">
+	</footer>
+
+</body>
+</html>
